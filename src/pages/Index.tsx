@@ -30,13 +30,27 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <h1 className="font-montserrat font-bold text-5xl lg:text-6xl text-foreground mb-6 leading-tight">
-                Корпоративные сувениры — 
-                <span className="text-primary"> посол вашего бренда</span>
+                Мерч и подарки с логотипом 
+                <span className="text-primary">для выставок и мероприятий</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Создаём качественную сувенирную продукцию с вашим логотипом. 
-                От идеи до готовых изделий — полный цикл производства за 7 дней.
+                Производим брендированную продукцию для конференций, выставок и корпоративных мероприятий. 
+                <span className="font-semibold text-primary">От 100 единиц за 3-5 дней.</span>
               </p>
+              <div className="grid grid-cols-3 gap-4 mb-8 text-center">
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4">
+                  <div className="font-montserrat font-bold text-2xl text-primary">500+</div>
+                  <div className="text-sm text-muted-foreground">мероприятий</div>
+                </div>
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4">
+                  <div className="font-montserrat font-bold text-2xl text-primary">3 дня</div>
+                  <div className="text-sm text-muted-foreground">от заказа</div>
+                </div>
+                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4">
+                  <div className="font-montserrat font-bold text-2xl text-primary">24/7</div>
+                  <div className="text-sm text-muted-foreground">поддержка</div>
+                </div>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-montserrat font-semibold px-8 py-4 text-lg rounded-xl">
                   <Icon name="Gift" size={20} className="mr-2" />
@@ -169,24 +183,74 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Event Types Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="font-montserrat font-bold text-4xl lg:text-5xl text-foreground mb-4">
-              Виды сувенирной продукции
+              Мерч для любых мероприятий
             </h2>
             <p className="text-xl text-muted-foreground">
-              Широкий ассортимент продукции для любых задач и бюджета
+              Специализируемся на брендированной продукции для B2B событий
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              { 
+                icon: "Building", 
+                title: "Выставки и форумы", 
+                items: "Промостенды, баннеры, рекламная продукция",
+                description: "Привлекательный мерч для стендов, который запомнится посетителям"
+              },
+              { 
+                icon: "Users", 
+                title: "Конференции", 
+                items: "Блокноты, ручки, папки, бейджи",
+                description: "Полезные и стильные подарки для участников мероприятий"
+              },
+              { 
+                icon: "Trophy", 
+                title: "Корпоративы", 
+                items: "Футболки, кружки, сувениры, награды",
+                description: "Создаём атмосферу единства команды с фирменным мерчем"
+              }
+            ].map((event, index) => (
+              <Card key={index} className="text-left hover:shadow-lg transition-all animate-fade-in hover:scale-105 border-l-4 border-l-primary">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                    <Icon name={event.icon as any} size={32} className="text-primary" />
+                  </div>
+                  <CardTitle className="font-montserrat text-xl mb-2">{event.title}</CardTitle>
+                  <CardDescription className="text-primary font-medium text-base">{event.items}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">{event.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="font-montserrat font-bold text-4xl lg:text-5xl text-foreground mb-4">
+              Популярная продукция
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Топ-категории мерча для мероприятий с готовыми тиражами
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "BookOpen", title: "Канцелярия", items: "Блокноты, ручки, планинги, папки", price: "от 50₽" },
-              { icon: "Coffee", title: "Посуда", items: "Кружки, термосы, бутылки для воды", price: "от 200₽" },
-              { icon: "Shirt", title: "Текстиль", items: "Футболки, толстовки, бейсболки", price: "от 300₽" },
-              { icon: "Smartphone", title: "Электроника", items: "Пауэрбанки, флешки, наушники", price: "от 500₽" }
+              { icon: "BookOpen", title: "Блокноты А5", items: "100 шт.", price: "от 4900₽" },
+              { icon: "Coffee", title: "Кружки", items: "50 шт.", price: "от 7500₽" },
+              { icon: "Shirt", title: "Футболки", items: "100 шт.", price: "от 19900₽" },
+              { icon: "Smartphone", title: "Пауэрбанки", items: "50 шт.", price: "от 24500₽" }
             ].map((category, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all animate-fade-in hover:scale-105">
                 <CardHeader>
